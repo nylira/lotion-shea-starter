@@ -16,6 +16,9 @@ var app = new Vue({
     getState() {
       return fetch('/state').then(res => res.json());
     },
+    async refreshState() {
+      this.blockchainState = await this.getState();
+    },
     sendTx(tx) {
       return fetch('/txs', {
         headers: {
@@ -30,11 +33,14 @@ var app = new Vue({
       console.log('sending tx...');
       let result = await this.sendTx(this.txData);
       console.log('result of submitting a transaction:', result);
-      this.blockchainState = await this.getState();
+      this.refreshState();
       this.resetInput();
     },
     resetInput() {
       this.txData.body = '';
     },
+  },
+  mounted() {
+    setInterval(this.refreshState(), 333);
   },
 });
