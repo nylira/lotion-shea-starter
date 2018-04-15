@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>my lotion app</title>
+  <title>Rocket App</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <p>open public/index.html and get hacking!</p>
-  
+  <div id="app">
+    <h1>Rocket App</h1>
+    <form v-on:submit.prevent.default="sendTransaction">
+      <input type="text" placeholder="Anonymous" v-model="txData.userId">
+      <input type="text" placeholder="Enter message..." v-model="txData.body" required>
+      <button type="submit">Send</button>
+    </form>
+    <h2>Messages</h2>
+    <div class="messages">
+      <div class="message" v-for="m in blockchainState.messages" :key="m.id">
+        {{ m.userId }} - {{ m.body }}
+      </div>
+    </div>
+    <h2>Details</h2>
+    <p>Total Transactions: {{ blockchainState.count }}</p>
+  </div>
   <script src="main.js"></script>
 </body>
 </html>
