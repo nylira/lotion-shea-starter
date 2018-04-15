@@ -33,10 +33,11 @@ var app = new Vue({
       console.log('sending tx...');
       let result = await this.sendTx(this.txData);
       console.log('result of submitting a transaction:', result);
+      this.resetTxData();
       this.refreshState();
-      this.resetInput();
     },
-    resetInput() {
+    resetTxData() {
+      this.txData.id = (Math.random() * 1000000).toString(16);
       this.txData.body = '';
     },
   },

@@ -10,13 +10,48 @@
     <input type="text" placeholder="Enter message..." v-model="txData.body" required>
     <button type="submit">Send</button>
   </form>
-  <h2>Messages</h2>
   <div class="messages">
-    <div class="message" v-for="m in blockchainState.messages" :key="m.id">
-      {{ m.userId }} - {{ m.body }}
+    <div id="m.id" class="message" v-for="m in blockchainState.messages" :key="m.id">
+      {{ m.userId }}: {{ m.body }}
     </div>
   </div>
-  <hr>
-  <p>Total Messages: {{ blockchainState.count }}</p>
+  <div id="bottom">Total Messages: {{ blockchainState.count }}</div>
 </div>
 <script src="main.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+#bottom {
+  border-top: 1px solid #ddd;
+  padding: 0.5rem;
+  color: #666;
+}
+form {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+form, .message {
+  max-width: 480px;
+}
+body, input, button {
+  font: 16px/1.5 sans-serif;
+  color: #000;
+}
+input, button {
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+  height: 2rem;
+  display: inline-block;
+  line-height: 1rem;
+}
+.message {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-top: 1px solid #ddd;
+}
+</style>
