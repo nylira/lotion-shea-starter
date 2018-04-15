@@ -8,8 +8,8 @@ var app = new Vue({
     },
     txData: {
       id: (Math.random() * 1000000).toString(16),
-      userId: 'personId',
-      body: 'hello world woohooo',
+      userId: 'Anonymous',
+      body: '',
     },
   }),
   methods: {
