@@ -41,6 +41,6 @@ var app = new Vue({
     },
   },
   mounted() {
-    setInterval(this.refreshState(), 333);
+    setInterval(() => this.refreshState(), 333);
   },
 });
